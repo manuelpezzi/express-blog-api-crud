@@ -6,7 +6,7 @@ function index(req, res) {
 function show(req, res) {
     const id = parseInt(req.params.id)
 
-    const post = arreyPost.find(post => post.id === id);
+    const post = arreyPosts.find(post => post.id === id);
 
     res.status(404)
 
@@ -31,7 +31,7 @@ function patch(req, res) {
 function destroy(req, res) {
     const id = parseInt(req.params.id)
 
-    const post = arreyPost.find(post => post.id === id);
+    const post = arreyPosts.find(post => post.id === id);
 
     res.status(404)
 
@@ -42,7 +42,7 @@ function destroy(req, res) {
             message: "post non trovato"
         });
     }
-    arreypost.splice(arreypost.indexOf(post), 1)
+    arreyPosts.splice(arreyPosts.indexOf(post), 1)
 
     res.sendStatus(204)
 
