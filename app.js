@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 });
 
-app.use('/posts', postRouter)
+app.use('/posts', postRouter);
 
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`)

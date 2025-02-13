@@ -1,38 +1,38 @@
-const arreyPosts = require('../data/posts.js');
+const arrayPosts = require('../data/posts.js');
 
 
 function index(req, res) {
-    res.json(arreyPosts)
+    res.json(arrayPosts)
 }
 function show(req, res) {
     const id = parseInt(req.params.id)
 
-    const post = arreyPosts.find(post => post.id === id);
+    const post = arrayPosts.find(post => post.id === id);
 
     res.status(404)
 
 
     if (!post) {
         return res.json({
-            erorr: "Not Found",
+            error: "Not Found",
             message: "post non trovato"
         });
     }
     res.json(post)
 }
 function store(req, res) {
-    constnewId = arreyPosts[arreyPosts.length - 1].id + 1;
+    const newId = arrayPosts[arrayPosts.length - 1].id + 1;
 
     const newPost = {
         id: newId,
-        name: req.body.name,
+        title: req.body.title,
         content: req.body.content,
         image: req.body.image,
         tags: req.body.tags
 
     }
-    arreyPosts.push(newPost)
-    console.log(arreyPosts);
+    arrayPosts.push(newPost)
+    console.log(arrayPosts);
 
     res.status(201);
     res.json(newPost);
@@ -40,7 +40,7 @@ function store(req, res) {
 function update(req, res) {
     const id = parseInt(req.params.id);
 
-    const post = arreyPosts.find(post => post.id === id);
+    const post = arrayPosts.find(post => post.id === id);
 
     if (!post) {
         res.status(404);
@@ -52,12 +52,12 @@ function update(req, res) {
     }
 
 
-    post.name = req.body.name;
+    post.title = req.body.title;
     post.image = req.body.image;
-    post.content = req.body.ingredients;
+    post.content = req.body.content;
 
 
-    console.log(arreyPosts)
+    console.log(arrayPosts)
 
 
     res.json(post);
@@ -66,7 +66,7 @@ function update(req, res) {
 function patch(req, res) {
     const id = parseInt(req.params.id)
 
-    const post = arreyPosts.find(post => post.id === id);
+    const post = arrayPosts.find(post => post.id === id);
 
     if (!post) {
         res.status(404);
@@ -74,7 +74,7 @@ function patch(req, res) {
 
         return res.json({
 
-            erorr: "Not Found",
+            error: "Not Found",
             message: "Pizza non trovata"
         })
     }
@@ -84,7 +84,7 @@ function patch(req, res) {
 
     }
 
-    console.log(arreyPosts)
+    console.log(arrayPosts)
     res.json(post)
 
 
@@ -93,18 +93,18 @@ function destroy(req, res) {
 
     const id = parseInt(req.params.id)
 
-    const post = arreyPosts.find(post => post.id === id);
+    const post = arrayPosts.find(post => post.id === id);
 
     res.status(404)
 
 
     if (!post) {
         return res.json({
-            erorr: "Not Found",
+            error: "Not Found",
             message: "post non trovato"
         });
     }
-    arreyPosts.splice(arreyPosts.indexOf(post), 1)
+    arreyPosts.splice(arrayPosts.indexOf(post), 1)
 
     console.log(post)
 
