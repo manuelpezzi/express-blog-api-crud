@@ -75,7 +75,7 @@ function patch(req, res) {
         return res.json({
 
             error: "Not Found",
-            message: "Pizza non trovata"
+            message: "post non trovato"
         })
     }
 
