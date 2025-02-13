@@ -1,5 +1,6 @@
 const arreyPosts = require('../data/posts.js');
 
+
 function index(req, res) {
     res.json(arreyPosts)
 }
@@ -20,13 +21,73 @@ function show(req, res) {
     res.json(post)
 }
 function store(req, res) {
-    res.send('Creazione nuova pizza');
+    constnewId = arreyPosts[arreyPosts.length - 1].id + 1;
+
+    const newPost = {
+        id: newId,
+        name: req.body.name,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+
+    }
+    arreyPosts.push(newPost)
+    console.log(arreyPosts);
+
+    res.status(201);
+    res.json(newPost);
 }
 function update(req, res) {
-    res.send('Modifica integrale della pizza ' + req.params.id);
+    const id = parseInt(req.params.id);
+
+    const post = arreyPosts.find(post => post.id === id);
+
+    if (!post) {
+        res.status(404);
+
+        return res.json({
+            error: "Not Found",
+            message: "Post non torvato"
+        })
+    }
+
+
+    post.name = req.body.name;
+    post.image = req.body.image;
+    post.content = req.body.ingredients;
+
+
+    console.log(arreyPosts)
+
+
+    res.json(post);
+
 }
 function patch(req, res) {
-    res.send('Modifica parziale della pizza ' + req.params.id);
+    const id = parseInt(req.params.id)
+
+    const post = arreyPosts.find(post => post.id === id);
+
+    if (!post) {
+        res.status(404);
+
+
+        return res.json({
+
+            erorr: "Not Found",
+            message: "Pizza non trovata"
+        })
+    }
+
+    for (let key in req.body) {
+        post[key] = req.body[key];
+
+    }
+
+    console.log(arreyPosts)
+    res.json(post)
+
+
 }
 function destroy(req, res) {
 

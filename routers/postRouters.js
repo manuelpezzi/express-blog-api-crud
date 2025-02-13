@@ -1,8 +1,10 @@
 const express = require('express');
 
 const router = express.Router();
-const arreyPost = require("../data/posts.js")
-const { index, show, store, update, patch, destroy } = require('../controllers/postController.js')
+
+const arreyPosts = ('../data/posts.js');
+
+const { index, show, store, update, patch, destroy } = require('../controllers/postController.js');
 //index
 router.get('/', index)
 //show
