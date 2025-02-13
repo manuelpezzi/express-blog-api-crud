@@ -29,6 +29,7 @@ function patch(req, res) {
     res.send('Modifica parziale della pizza ' + req.params.id);
 }
 function destroy(req, res) {
+
     const id = parseInt(req.params.id)
 
     const post = arreyPosts.find(post => post.id === id);
@@ -43,6 +44,8 @@ function destroy(req, res) {
         });
     }
     arreyPosts.splice(arreyPosts.indexOf(post), 1)
+
+    console.log(post)
 
     res.sendStatus(204)
 

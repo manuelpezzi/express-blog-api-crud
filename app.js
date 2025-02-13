@@ -5,7 +5,7 @@ const postRouter = require('./routers/post.js')
 
 app.use(express.static('public'));
 
-
+//homepage
 app.get('/'), (reg, res) => {
     res.send("Server del mio blog")
 
