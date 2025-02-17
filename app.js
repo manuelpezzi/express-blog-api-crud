@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
-
+app.use('/posts', postRouter);
 
 //homepage
 app.get('/', (req, res) => {
@@ -23,11 +23,13 @@ app.get('/', (req, res) => {
 
 });
 
-app.use('/posts', postRouter);
+app.use(errorsHandler)
+
+app.use(notFound)
+
+
 
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`)
 });
-app.use(errorsHandler)
 
-app.use(notFound)
