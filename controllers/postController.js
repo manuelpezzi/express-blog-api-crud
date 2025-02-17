@@ -56,7 +56,6 @@ function update(req, res) {
     post.image = req.body.image;
     post.content = req.body.content;
 
-
     console.log(arrayPosts)
 
 
@@ -104,7 +103,7 @@ function destroy(req, res) {
             message: "post non trovato"
         });
     }
-    arreyPosts.splice(arrayPosts.indexOf(post), 1)
+    arrayPosts.splice(arrayPosts.indexOf(post), 1)
 
     console.log(post)
 
